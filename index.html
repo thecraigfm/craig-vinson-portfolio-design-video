@@ -1,61 +1,684 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Home | Craig Vinson</title><link rel="stylesheet" href="styles.css"></head><body>
-<div class="top"><div class="wrap"><span>XENIA, OHIO</span><span>DIRECTOR · PRODUCER · STORYTELLER</span></div></div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Craig Vinson | Film & Media</title>
 
-<nav class="nav"><div class="wrap navin">
-<a class="brand" href="index.html">CRAIG VINSON</a>
-<div class="navlinks">
-<a href="films.html">Films</a><a href="interviews.html">Interviews</a><a href="production.html">Production</a>
-<a href="about.html">About</a><a href="contact.html">Contact</a>
-</div></div></nav>
+<style>
+:root{
+  --gold:#d8b66a;
+  --white:#f6f5f1;
+  --muted:#c9c8c3;
+  --black:#08090b;
+}
 
-<section class="hero"><div class="wrap hero-inner">
-<div class="hero-grid">
-<div class="hero-copy">
-<div class="kicker">TITLE SEQUENCE</div>
-<h1>Stories worth <span style="color:#c9a86a">watching.</span> People worth <span style="color:#c9a86a">hearing.</span></h1>
-<p>I seek to connect with people through the medium of radio on a personal level, sharing life's highs and lows with them and pointing them to true hope and encouragement.</p>
-<div class="hero-meta"><span>Radio DJ / Show Host</span><span>20+ years radio</span><span>Storytelling</span><span>Audience connection</span></div>
-</div>
-<div class="hero-frame"><img src="assets/craig-portrait-alt.jpg" alt="Craig Vinson portrait"><div class="frame-label">CRAIG VINSON · MEDIA PROFESSIONAL</div></div>
-</div></div></section>
-<div class="title-sequence"><div class="wrap"><span>FEATURE PRESENTATION</span><span>PLAY / WATCH / LISTEN</span></div></div>
+*{box-sizing:border-box}
 
-<section class="section wrap">
-<div class="work-index"><div><div class="kicker">FILMOGRAPHY</div><h2>Selected work.</h2><p>The strongest pieces first. Full stories and production notes live deeper in the portfolio.</p></div>
-<div class="film-list">
-<div class="film-row"><div class="film-no">01</div><div><h3>Larry the Cucumber</h3><p>Interview-driven promotional piece built around accessibility, audience connection, and clear storytelling.</p></div><div class="film-type">INTERVIEW<br>04:33</div></div>
-<div class="film-row"><div class="film-no">02</div><div><h3>ADHD Awareness Month</h3><p>A community-focused audio segment using personal stories and practical information.</p></div><div class="film-type">AUDIO<br>15:12</div></div>
-<div class="film-row"><div class="film-no">03</div><div><h3>On-Air & Social Work</h3><p>Placeholder for student-authored description of video/social work created around DJ shifts.</p></div><div class="film-type">VIDEO<br>PLACEHOLDER</div></div>
-</div></div>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--black);
+  color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* ---------- NAV ---------- */
+
+.nav{
+  position:fixed;
+  inset:0 0 auto 0;
+  z-index:20;
+  padding:26px 42px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,.65),
+    transparent
+  );
+}
+
+.logo{
+  font-size:.78rem;
+  letter-spacing:.22em;
+  font-weight:800;
+}
+
+.nav-links{
+  display:flex;
+  gap:28px;
+  font-size:.72rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.nav-links a{
+  opacity:.8;
+  transition:opacity .25s;
+}
+
+.nav-links a:hover{
+  opacity:1;
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:680px;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+}
+
+.hero-video{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  background:#111;
+}
+
+.hero-video iframe{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:177.78vh;
+  height:100vh;
+  min-width:100%;
+  min-height:56.25vw;
+  transform:translate(-50%,-50%);
+  border:0;
+  pointer-events:none;
+}
+
+/* cinematic treatment over video */
+
+.hero-video::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.96) 0%,
+      rgba(0,0,0,.55) 38%,
+      rgba(0,0,0,.16) 72%,
+      rgba(0,0,0,.42) 100%
+    ),
+    linear-gradient(
+      to right,
+      rgba(0,0,0,.4),
+      transparent 60%
+    );
+}
+
+/* subtle film tint */
+
+.hero-video::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:rgba(55,42,23,.14);
+  mix-blend-mode:multiply;
+  pointer-events:none;
+}
+
+.hero-content{
+  position:relative;
+  z-index:5;
+  width:min(1200px,calc(100% - 70px));
+  margin:0 auto;
+  padding:0 0 82px;
+}
+
+.kicker{
+  font-size:.7rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:800;
+}
+
+.hero h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(4.4rem,10vw,9.8rem);
+  font-weight:400;
+  letter-spacing:-.06em;
+  line-height:.8;
+  margin:18px 0 28px;
+  max-width:850px;
+}
+
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#e4e3de;
+}
+
+.hero-copy{
+  max-width:700px;
+}
+
+.hero-copy p{
+  color:var(--muted);
+  font-size:1.05rem;
+  max-width:650px;
+  line-height:1.7;
+}
+
+.watch{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-top:28px;
+  font-size:.72rem;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+  font-weight:800;
+  border-bottom:1px solid rgba(255,255,255,.45);
+  padding-bottom:10px;
+}
+
+.watch span{
+  color:var(--gold);
+}
+
+/* ---------- CONTENT ---------- */
+
+.section{
+  padding:110px 0;
+  background:var(--black);
+}
+
+.wrap{
+  width:min(1180px,calc(100% - 60px));
+  margin:auto;
+}
+
+.section-kicker{
+  color:var(--gold);
+  font-size:.68rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-weight:800;
+}
+
+.section h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:400;
+  font-size:clamp(3rem,7vw,7rem);
+  line-height:.9;
+  letter-spacing:-.05em;
+  margin:15px 0 30px;
+}
+
+.section-intro{
+  max-width:720px;
+  margin-bottom:60px;
+}
+
+.section-intro p{
+  color:#aaa9a4;
+  font-size:1.05rem;
+  line-height:1.75;
+}
+
+/* ---------- FEATURE ---------- */
+
+.feature{
+  background:#111316;
+  border:1px solid #292c30;
+}
+
+.feature-media{
+  position:relative;
+  aspect-ratio:16/9;
+  background:#050607;
+}
+
+.feature-media iframe{
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.feature-body{
+  padding:42px;
+}
+
+.feature-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:3rem;
+  line-height:1;
+  margin:10px 0 15px;
+}
+
+.feature-copy{
+  color:#b2b2ad;
+  max-width:700px;
+  line-height:1.7;
+}
+
+.credits{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  margin-top:32px;
+  border-top:1px solid #303338;
+}
+
+.credit{
+  padding:20px 18px 8px 0;
+  border-right:1px solid #303338;
+}
+
+.credit:last-child{
+  border-right:0;
+  padding-left:18px;
+}
+
+.credit-label{
+  color:var(--gold);
+  font-size:.62rem;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-weight:800;
+}
+
+.credit strong{
+  display:block;
+  margin-top:7px;
+}
+
+/* ---------- PERSONAL ---------- */
+
+.personal{
+  padding:120px 0;
+  background:#ece8df;
+  color:#131416;
+}
+
+.personal-grid{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:70px;
+  align-items:center;
+}
+
+.personal img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+}
+
+.personal h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(3rem,6vw,6rem);
+  line-height:.9;
+  letter-spacing:-.05em;
+  margin:12px 0 28px;
+  font-weight:400;
+}
+
+.personal p{
+  max-width:670px;
+  color:#474844;
+  line-height:1.8;
+}
+
+.brand-statement{
+  border-left:3px solid var(--gold);
+  padding-left:22px;
+  margin-top:34px;
+  font-family:Georgia,serif;
+  font-size:1.35rem;
+}
+
+/* ---------- END ---------- */
+
+.end{
+  min-height:70vh;
+  display:flex;
+  align-items:center;
+  background:
+    linear-gradient(rgba(0,0,0,.67),rgba(0,0,0,.82)),
+    url("assets/craig-portrait-alt.jpg") center/cover;
+}
+
+.end h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(3.5rem,8vw,8rem);
+  line-height:.82;
+  font-weight:400;
+  letter-spacing:-.05em;
+  margin:15px 0 30px;
+}
+
+.end-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  font-size:.7rem;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+}
+
+.end-links a{
+  border-bottom:1px solid rgba(255,255,255,.4);
+  padding-bottom:8px;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:800px){
+
+  .nav{
+    padding:20px 22px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero-content{
+    width:calc(100% - 34px);
+    padding-bottom:50px;
+  }
+
+  .hero h1{
+    font-size:4.6rem;
+  }
+
+  .hero-meta{
+    gap:10px;
+    line-height:1.6;
+  }
+
+  .hero-copy p{
+    font-size:.98rem;
+  }
+
+  .wrap{
+    width:calc(100% - 30px);
+  }
+
+  .credits{
+    grid-template-columns:1fr;
+  }
+
+  .credit{
+    border-right:0;
+    border-bottom:1px solid #303338;
+    padding:18px 0;
+  }
+
+  .credit:last-child{
+    padding-left:0;
+    border-bottom:0;
+  }
+
+  .personal-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .personal{
+    padding:80px 0;
+  }
+
+  .end{
+    min-height:60vh;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <a class="logo" href="#">CRAIG VINSON</a>
+
+  <nav class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+
+<section class="hero">
+
+  <div class="hero-video">
+
+    <!-- Big Buck Bunny — temporary cinematic background test -->
+    <iframe
+      src="https://www.youtube.com/embed/aqz-KE-bpKQ?autoplay=1&mute=1&controls=0&loop=1&playlist=aqz-KE-bpKQ&playsinline=1&modestbranding=1&rel=0"
+      allow="autoplay; fullscreen">
+    </iframe>
+
+  </div>
+
+
+  <div class="hero-content">
+
+    <div class="kicker">
+      DIRECTOR · PRODUCER · STORYTELLER
+    </div>
+
+    <h1>
+      Stories worth watching.
+    </h1>
+
+    <div class="hero-copy">
+
+      <p>
+        A visual storytelling portfolio built around human connection,
+        thoughtful production, and media that gives people something
+        worth remembering.
+      </p>
+
+    </div>
+
+    <div class="hero-meta">
+      <span>Craig Vinson</span>
+      <span>Ohio</span>
+      <span>20+ Years in Media</span>
+    </div>
+
+    <a class="watch" href="#work">
+      <span>▶</span>
+      Enter the filmography
+    </a>
+
+  </div>
+
 </section>
 
-<section class="spotlight"><div class="wrap section">
-<div class="spot-grid">
-<div class="spot-media"><iframe src="https://www.youtube.com/embed/8zH_O74hZBw" title="Featured reel placeholder" allowfullscreen loading="lazy"></iframe></div>
-<div class="spot-copy"><div class="kicker">FEATURED PRESENTATION</div><h2>The work should feel like a scene.</h2><p>This page treats the portfolio like a screening program: the work leads, the context follows, and every project earns its own frame.</p><div class="factgrid"><div class="fact"><span>Role</span><strong>Radio DJ / Show Host</strong></div><div class="fact"><span>Strength</span><strong>Storytelling + audience connection</strong></div><div class="fact"><span>Focus</span><strong>Human-centered media</strong></div></div></div>
-</div></div></section>
 
-<section class="section wrap">
-<div class="case">
-<div class="case-img"><img src="assets/resound-radio.jpg" alt="Craig Vinson holding the Resound Radio sign"></div>
-<div class="case-copy"><div class="label">OFF CAMERA / CONTEXT</div><h2>Behind the voice.</h2>
-<p>Throughout my 20+ year radio career, I honed my skills in storytelling, branding, audience engagement, and technical production, all the while building a deep understanding of this dynamic industry. I pride myself in my ability to connect with diverse audiences and deliver content that resonates.</p>
-<div class="block"><strong>Calling</strong><p>To connect with people and encourage them.</p></div>
-<a href="about.html">Read the full filmmaker-style profile →</a></div>
-</div>
+<section id="work" class="section">
+
+  <div class="wrap">
+
+    <div class="section-intro">
+
+      <div class="section-kicker">
+        SELECTED WORK
+      </div>
+
+      <h2>
+        The work<br>speaks first.
+      </h2>
+
+      <p>
+        Start with the strongest pieces. Each project can then open into
+        the story behind the finished work—the purpose, decisions,
+        production role, and reflection.
+      </p>
+
+    </div>
+
+
+    <article class="feature">
+
+      <div class="feature-media">
+
+        <iframe
+          src="https://www.youtube.com/embed/aqz-KE-bpKQ"
+          title="Temporary demo reel video"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+      <div class="feature-body">
+
+        <div class="section-kicker">
+          FEATURED FILM / DEMO REEL
+        </div>
+
+        <div class="feature-title">
+          Feature Presentation
+        </div>
+
+        <p class="feature-copy">
+          Replace this temporary video with your strongest demo reel,
+          sizzle reel, or visual storytelling project.
+        </p>
+
+        <div class="credits">
+
+          <div class="credit">
+            <div class="credit-label">Role</div>
+            <strong>Director / Producer / Editor</strong>
+          </div>
+
+          <div class="credit">
+            <div class="credit-label">Focus</div>
+            <strong>Human-centered storytelling</strong>
+          </div>
+
+          <div class="credit">
+            <div class="credit-label">Format</div>
+            <strong>Video / Film / Digital</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
 </section>
 
-<section class="quote"><div class="wrap">
-<blockquote>“I seek to connect with people through the medium of radio on a personal level, sharing life's highs and lows with them and pointing them to true hope and encouragement.”</blockquote>
-<cite>Craig Vinson · Personal brand statement</cite>
-</div></section>
 
-<section class="end"><div class="wrap end-grid">
-<div><div class="kicker">NEXT</div><h2>Let's make the next story.</h2></div>
-<div class="end-links"><a href="films.html">Explore films →</a><a href="interviews.html">Explore interviews →</a><a href="production.html">Explore production →</a><a href="contact.html">Stay in touch →</a></div>
-</div></section>
+<section id="about" class="personal">
 
-<footer class="footer"><div class="wrap"><span>Craig Vinson · Radio DJ / Show Host</span><span>Portfolio prototype for Senior Seminar</span></div></footer>
-</body></html>
+  <div class="wrap personal-grid">
+
+    <div>
+
+      <img
+        src="assets/craig-portrait.jpg"
+        alt="Craig Vinson portrait">
+
+    </div>
+
+
+    <div>
+
+      <div class="section-kicker">
+        THE FILMMAKER
+      </div>
+
+      <h2>
+        Don't hide the person behind the work.
+      </h2>
+
+      <p>
+        Throughout my 20+ year radio career, I honed my skills in
+        storytelling, branding, audience engagement, and technical
+        production, all the while building a deep understanding of
+        this dynamic industry. I pride myself in my ability to connect
+        with diverse audiences and deliver content that resonates.
+      </p>
+
+      <div class="brand-statement">
+        I seek to connect with people through the medium of radio on a
+        personal level, sharing life's highs and lows with them and
+        pointing them to true hope and encouragement.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="contact" class="end">
+
+  <div class="wrap">
+
+    <div class="section-kicker">
+      NEXT PROJECT
+    </div>
+
+    <h2>
+      Let's tell<br>another story.
+    </h2>
+
+    <div class="end-links">
+
+      <a href="mailto:craigvinson@cedarville.edu">
+        Email
+      </a>
+
+      <a
+        href="https://www.linkedin.com/in/craig-vinson-fm/"
+        target="_blank"
+        rel="noopener">
+        LinkedIn
+      </a>
+
+      <a
+        href="https://www.youtube.com/resoundradiocu"
+        target="_blank"
+        rel="noopener">
+        YouTube
+      </a>
+
+      <a
+        href="https://soundcloud.com/yourwayfm"
+        target="_blank"
+        rel="noopener">
+        SoundCloud
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>
